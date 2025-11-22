@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Form Validation</title>
+<style>
+.err { color: red; font-size: 12px; }
+</style>
+</head>
+<body>
+  <form id="myForm">
+  <input type="text" id="name" placeholder="Enter name" />
+  <span id="nameErr" class="err"></span><br>
+  <input type="email" id="email" placeholder="Enter email" />
+  <span id="emailErr" class="err"></span><br>
+  <input type="text" id="mobile" placeholder="Enter mobile"><br>
+  <span id="mobileErr" class="err"></span><br>
+  <button type="submit">Submit</button>
+  </form>
+<script>
+document.getElementById('myForm').addEventListener('submit', function(e){
+e.preventDefault();
+let name = document.getElementById('name').value.trim();
+let email = document.getElementById('email').value.trim();
+let valid = true;
+// Name required
+if(name === ""){
+document.getElementById('nameErr').textContent = "Name is required";
+valid = false;
+} else {
+document.getElementById('nameErr').textContent = "";
+}
+// Email format
+let pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+if(!pattern.test(email)){
+document.getElementById('emailErr').textContent = "Invalid email";
+valid = false;
+} else {
+document.getElementById('emailErr').textContent = "";
+}
+if(valid){
+alert("Form submitted successfully!");
+}
+let mobPattern = /^[0-9]{10}$/;
+  if(!mobPattern.test(mobile)){
+    mobileErr.textContent = "Enter valid 10-digit mobile number";
+    valid = false;
+  } else mobileErr.textContent = "";
+});
+ 
+
+</script>
+
+</body>
+</html>
